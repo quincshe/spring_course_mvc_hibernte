@@ -1,9 +1,10 @@
-package ru.didenko.spring.mvc_hibernate_aop.dao;
+package ru.didenko.spring.mvc_hibernate_aop.service;
 
 import java.util.List;
 import ru.didenko.spring.mvc_hibernate_aop.entity.Employee;
 
-public interface EmployeeDAO {
+
+public interface EmployeeService {
 
     List<Employee> getAllEmployees();
 

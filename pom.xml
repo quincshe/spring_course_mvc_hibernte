@@ -51,6 +51,12 @@
       <artifactId>postgresql</artifactId>
       <version>42.7.1</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>6.1.0.Final</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>spring_course_mvc_hibernate_aop</finalName>

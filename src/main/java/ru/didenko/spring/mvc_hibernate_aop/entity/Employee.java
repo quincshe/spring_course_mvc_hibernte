@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "employees")
@@ -18,15 +21,19 @@ public class Employee {
     private int id;
 
     @Column(name = "name")
+    @Size(min = 3, max = 25, message = "name must be min 3 symbols, max 25 symbols")
     private String name;
 
     @Column(name = "surname")
+    @Size(min = 2, max = 25, message = "name must be min 2 symbols, max 25 symbols")
     private String surname;
 
     @Column(name = "department")
     private String department;
 
     @Column(name = "salary")
+    @Min(value = 500, message = "min value 500")
+    @Max(value = 2000, message = "max value 2000")
     private int salary;
 
     public Employee() {
