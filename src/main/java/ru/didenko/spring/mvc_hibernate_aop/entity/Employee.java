@@ -18,6 +18,15 @@ import javax.validation.constraints.Size;
 @Table(name = "employees")
 public class Employee {
 
+    @Transient // для того чтобы не сохранялось в базу.
+    private static final Set<String> DEPARTMENTS = new HashSet<>();
+
+    static {
+        DEPARTMENTS.add("IT");
+        DEPARTMENTS.add("HR");
+        DEPARTMENTS.add("Sales");
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -39,14 +48,7 @@ public class Employee {
     @Column(name = "department")
     private String department;
 
-    @Transient // для того чтобы не сохранялось в базу.
-    private Set<String> departments;
-
     public Employee() {
-        departments = new HashSet<>();
-        departments.add( "IT");
-        departments.add("HR");
-        departments.add("Sales");
     }
 
     public Employee(String name, String surname, String department, int salary) {
@@ -54,6 +56,10 @@ public class Employee {
         this.surname = surname;
         this.department = department;
         this.salary = salary;
+    }
+
+    public Set<String> getDepartments() {
+        return DEPARTMENTS;
     }
 
     public int getId() {
@@ -86,14 +92,6 @@ public class Employee {
 
     public void setDepartment(String department) {
         this.department = department;
-    }
-
-    public Set<String> getDepartments() {
-        return departments;
-    }
-
-    public void setDepartments(Set<String> departments) {
-        this.departments = departments;
     }
 
     public int getSalary() {
