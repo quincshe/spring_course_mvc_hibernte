@@ -21,8 +21,9 @@
       <form:errors path="salary" />
       <br>
       <br> Department
-      <form:input path="department" />
-      <form:errors path="department" />
+                 <form:select path="department">
+                   <form:options items="${employee.departments}" />
+                 </form:select>
       <br>
       <br>
       <input type="submit" value="Add" />

@@ -1,12 +1,15 @@
 package ru.didenko.spring.mvc_hibernate_aop.entity;
 
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
@@ -36,13 +39,14 @@ public class Employee {
     @Column(name = "department")
     private String department;
 
-//    private Map<String, String> departments;
+    @Transient // для того чтобы не сохранялось в базу.
+    private Set<String> departments;
 
     public Employee() {
-//        departments = new HashMap<>();
-//        departments.put("IT", "IT");
-//        departments.put("HR", "HR");
-//        departments.put("Sales", "Sales");
+        departments = new HashSet<>();
+        departments.add( "IT");
+        departments.add("HR");
+        departments.add("Sales");
     }
 
     public Employee(String name, String surname, String department, int salary) {
@@ -84,13 +88,13 @@ public class Employee {
         this.department = department;
     }
 
-//    public Map<String, String> getDepartments() {
-//        return departments;
-//    }
-//
-//    public void setDepartments(Map<String, String> departments) {
-//        this.departments = departments;
-//    }
+    public Set<String> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(Set<String> departments) {
+        this.departments = departments;
+    }
 
     public int getSalary() {
         return salary;
