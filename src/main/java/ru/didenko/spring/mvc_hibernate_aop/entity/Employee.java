@@ -28,15 +28,21 @@ public class Employee {
     @Size(min = 2, max = 25, message = "name must be min 2 symbols, max 25 symbols")
     private String surname;
 
-    @Column(name = "department")
-    private String department;
-
     @Column(name = "salary")
     @Min(value = 500, message = "min value 500")
     @Max(value = 2000, message = "max value 2000")
     private int salary;
 
+    @Column(name = "department")
+    private String department;
+
+//    private Map<String, String> departments;
+
     public Employee() {
+//        departments = new HashMap<>();
+//        departments.put("IT", "IT");
+//        departments.put("HR", "HR");
+//        departments.put("Sales", "Sales");
     }
 
     public Employee(String name, String surname, String department, int salary) {
@@ -77,6 +83,14 @@ public class Employee {
     public void setDepartment(String department) {
         this.department = department;
     }
+
+//    public Map<String, String> getDepartments() {
+//        return departments;
+//    }
+//
+//    public void setDepartments(Map<String, String> departments) {
+//        this.departments = departments;
+//    }
 
     public int getSalary() {
         return salary;
